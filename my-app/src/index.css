@@ -33,26 +33,26 @@ code {
   border: 1px solid rgba(0, 0, 0, 1);
 }
 
-.text-wrapper_1 {
-  background-color: rgba(0, 0, 0, 1);
+.button_new_chat {
+  background-color: rgb(189, 195, 199);
   height: 48px;
   width: 152px;
   margin: 55px 0 0 106px;
 }
 
-.text_1 {
+/* .text_1 {
   width: 51px;
   height: 17px;
   overflow-wrap: break-word;
   color: rgba(255, 255, 255, 1);
-  font-size: 12px;
+  font-size: 20px;
   font-family: Source Han Sans-Regular;
   font-weight: NaN;
-  text-align: left;
+  text-align: right;
   white-space: nowrap;
   line-height: 17px;
   margin: 16px 0 0 51px;
-}
+} */
 
 .label_1 {
   width: 24px;
@@ -75,7 +75,7 @@ code {
 
 .dialog_box {
   background-color: rgba(241, 241, 241, 1);
-  height: 889px;
+  height: 1063px;
   border: 2px solid rgba(255, 255, 255, 1);
   margin-top: 4px;
   width: 1266px;
@@ -94,11 +94,11 @@ code {
   margin-top: 5px;
 }
 
-.block_1 {
+/* .block_1 {
   height: 141px;
   border: 1px solid rgba(255, 255, 255, 1);
   width: 1264px;
-}
+} */
 
 .group_4 {
   width: 1210px;

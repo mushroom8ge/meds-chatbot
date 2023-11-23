@@ -8,7 +8,17 @@ import axios from 'axios';
 function App() {
     const [msg, setMsg] = useState("");
     const [history, setHistory] = useState([]);
-    const [botResponse, setBotResponse] = useState('');
+
+    const handleButtonClick = async () => {
+        // Define the behavior when the button is clicked
+        const response = await axios.post('http://localhost:5005/webhooks/rest/webhook', {
+                sender: 'user',
+                message: "/restart",
+            });
+            setHistory([]);
+        console.log("Button clicked");
+        // Add your custom logic here
+    };
 
     const sendUserInputToRasa = async () => {
         try {
@@ -16,23 +26,32 @@ function App() {
                 sender: 'user',
                 message: msg,
             });
-
+    
             // Assuming the Rasa response is an array of messages
             const messages = response.data;
-            const botReply = messages.map(message => message.text).join('\n');
-
-            setBotResponse(botReply);
-            //   setHistory([...history, msg, botReply]);
-            // Update the history with both user input and bot response
+    
+            // Extract and display messages one by one
             setHistory([
                 ...history,
                 { type: 'user', text: msg },
-                { type: 'bot', text: botReply },
             ]);
+            messages.forEach(message => {
+                const botReply = message.text;
+                
+                // Log individual message
+                console.log(botReply);
+    
+                // Update the state to show each message
+                setHistory(prevHistory => [
+                    ...prevHistory,
+                    { type: 'bot', text: botReply },
+                ]);
+            });
         } catch (error) {
             console.error('Error communicating with Rasa:', error);
         }
     };
+    
 
     const handleEnterPress = () => {
         console.log("Enter key pressed"); // Debugging log
@@ -55,9 +74,14 @@ function App() {
         <div className="page flex-col">
             <div className="group_1 flex-row justify-between">
                 <div className="group_2 flex-col">
-                    <div className="text-wrapper_1 flex-col">
+                    {/* <div className="button_new_chat flex-col">
                         <span className="text_1">new&nbsp;chat</span>
-                    </div>
+                    </div> */}
+
+                    <button className="button_new_chat" onClick={handleButtonClick}>
+                        new chat
+                    </button>
+
                     <img
                         className="label_1"
                         src={"https://lanhu.oss-cn-beijing.aliyuncs.com/MasterDDSSlicePNG7058f070968149bce9e2b90b6257511e.png"}
@@ -75,7 +99,7 @@ function App() {
                         balalala&nbsp;&nbsp;balalala
                         <br />
                         <br />
-                        balalala
+                        OHCP%7Ckrystalb
                     </span>
                 </div>
                 <div className="dialog_box flex-col">
@@ -96,7 +120,7 @@ function App() {
                           }}
 
                     />
-                    <div className="history">
+                    <div className="history"  style={{ overflowY: 'auto', maxHeight: '1063px' }}>
                         {history.map((item, index) => (
                             // <div key={index}>{msg}</div>
                             <div key={index} className={item.type}>
@@ -111,14 +135,14 @@ function App() {
                     className="oh_logo"
                     src={"https://lanhu.oss-cn-beijing.aliyuncs.com/MasterDDSSlicePNG1f1c91c83883625a3eff3fd6e741f254.png"}
                 />
-                <div className="block_1 flex-col">
+                {/* <div className="block_1 flex-col">
                     <div className="group_4 flex-col">
                         <span className="text_2">text</span>
                         <div className="text-wrapper_2 flex-col">
                             <span className="text_3">Send&nbsp;&nbsp;a&nbsp;message</span>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

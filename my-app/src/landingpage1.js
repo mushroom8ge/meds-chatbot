@@ -12,7 +12,7 @@ class LandingPage extends Component {
         <div className="page flex-col">
         <div className="group_1 flex-row justify-between">
           <div className="group_2 flex-col">
-            <div className="text-wrapper_1 flex-col">
+            <div className="button_new_chat flex-col">
               <span className="text_1">new&nbsp;chat</span>
             </div>
             <img

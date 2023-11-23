@@ -67,9 +67,9 @@ function App() {
     <div className="page flex-col">
         <div className="group_1 flex-row justify-between">
             <div className="group_2 flex-col">
-                <div className="text-wrapper_1 flex-col">
+                {/* <div className="button_new_chat flex-col">
                     <span className="text_1">new&nbsp;chat</span>
-                </div>
+                </div> */}
                 <img
                     className="label_1"
                     src={"https://lanhu.oss-cn-beijing.aliyuncs.com/MasterDDSSlicePNG7058f070968149bce9e2b90b6257511e.png"}
@@ -111,14 +111,14 @@ function App() {
                 className="oh_logo"
                 src={"https://lanhu.oss-cn-beijing.aliyuncs.com/MasterDDSSlicePNG1f1c91c83883625a3eff3fd6e741f254.png"}
             />
-            <div className="block_1 flex-col">
+            {/* <div className="block_1 flex-col">
                 <div className="group_4 flex-col">
                     <span className="text_2">text</span>
                     <div className="text-wrapper_2 flex-col">
                         <span className="text_3">Send&nbsp;&nbsp;a&nbsp;message</span>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     </div>
 );
