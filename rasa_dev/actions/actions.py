@@ -302,14 +302,13 @@ class ActionFindMedication(Action):
                 date_end = dt.strptime(time['to'], "%Y-%m-%dT%H:%M:%S.%f%z")
 
         # assume the patient's id and status is in the range now
-        dispatcher.utter_message("medication_status is {}".format(medication_status))
-        dispatcher.utter_message("patient_id is {}".format(patient_id))
+        # dispatcher.utter_message("medication_status is {}".format(medication_status))
+        # dispatcher.utter_message("patient_id is {}".format(patient_id))
 
         full_path = _create_viewer_path(patient_id, medication_status) 
-        dispatcher.utter_message(full_path)
-        # results = requests.get(full_path, headers = HEADERS).json()
+        # dispatcher.utter_message(full_path)
         response = requests.get(full_path, headers = HEADERS)
-        dispatcher.utter_message("request code: {}".format(response.status_code))
+        # dispatcher.utter_message("request code: {}".format(response.status_code))
         results = response.json()
 
         if results: 

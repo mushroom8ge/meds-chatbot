@@ -10,14 +10,12 @@ function App() {
     const [history, setHistory] = useState([]);
 
     const handleButtonClick = async () => {
-        // Define the behavior when the button is clicked
         const response = await axios.post('http://localhost:5005/webhooks/rest/webhook', {
                 sender: 'user',
                 message: "/restart",
             });
             setHistory([]);
         console.log("Button clicked");
-        // Add your custom logic here
     };
 
     const sendUserInputToRasa = async () => {
@@ -55,17 +53,12 @@ function App() {
 
     const handleEnterPress = () => {
         console.log("Enter key pressed"); // Debugging log
-
-        // Call a function to send the message to the backend
         sendUserInputToRasa();
-        // Clear the input field by updating the key
-        // setHistory([...history, msg]);
         setMsg(""); // Clear the input field
         console.log("message:", msg); // Debugging log
     };
 
     const handleChange = (value) => {
-        // Handle changes in the input field
         console.log("Input value:", value); // Debugging log
         setMsg(value);
     };
@@ -120,7 +113,7 @@ function App() {
                           }}
 
                     />
-                    <div className="history"  style={{ overflowY: 'auto', maxHeight: '1063px' }}>
+                    <div className="history"  style={{ overflowY: 'auto', maxHeight: '720px' }}>
                         {history.map((item, index) => (
                             // <div key={index}>{msg}</div>
                             <div key={index} className={item.type}>
@@ -135,14 +128,6 @@ function App() {
                     className="oh_logo"
                     src={"https://lanhu.oss-cn-beijing.aliyuncs.com/MasterDDSSlicePNG1f1c91c83883625a3eff3fd6e741f254.png"}
                 />
-                {/* <div className="block_1 flex-col">
-                    <div className="group_4 flex-col">
-                        <span className="text_2">text</span>
-                        <div className="text-wrapper_2 flex-col">
-                            <span className="text_3">Send&nbsp;&nbsp;a&nbsp;message</span>
-                        </div>
-                    </div>
-                </div> */}
             </div>
         </div>
     );
