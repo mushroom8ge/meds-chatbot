@@ -1,0 +1,277 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - Hi
+    - Hey
+    - Hi bot
+    - Hey bot
+    - Hello
+    - hi again
+    - hi folks
+    - hi Mister
+    - hi pal!
+    - hi there
+    - greetings
+    - hello everybody
+    - hello is anybody there
+    - hello robot
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - Bye
+    - Bye!
+    - Goodbye
+    - See you later
+    - Bye bot
+    - Goodbye friend
+    - bye for now
+    - catch you later
+    - gotta go
+    - See you
+    - goodnight
+    - i'm off
+    - see you later alligator
+    - we'll speak soon
+
+- intent: affirm
+  examples: |
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - yes
+    - yes sure
+    - absolutely
+    - for sure
+    - yes yes yes
+    - definitely
+    - yeah
+    - ok
+    - okay
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - not today
+    - no thanks
+    - oh no
+    - noope
+    - do you have something else
+    - no this does not work for me
+
+- intent: thanks
+  examples: |
+    - Thanks
+    - Thank you
+    - Thank you so much
+    - Thanks bot
+    - Thanks for that
+    - cheers
+    - cheers bro
+    - ok thanks!
+    - perfect thank you
+    - thanks a bunch for everything
+    - thanks for the help
+    - thanks a lot
+    - amazing, thanks
+    - cool, thanks
+    - cool thank you
+
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+## can remove
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: inform
+  examples: |
+    - [OHCP%7Ckrystalb]{"entity":"patient_id"}
+    - [active]{"entity":"medication_status"}
+    - [preparation]{"entity":"medication_status"}
+    - [in-progress]{"entity":"medication_status"}
+    - [cancelled]{"entity":"medication_status"}
+    - [completed]{"entity":"medication_status"}
+    - [entered-in-error]{"entity":"medication_status"}
+    - [stopped]{"entity":"medication_status"}
+    - [declined]{"entity":"medication_status"}
+    - [unknown]{"entity":"medication_status"}
+    - [all]{"entity":"medication_status"}
+
+    - [austin]{"entity":"location"}
+    - [sydney]{"entity":"location"}
+    - [canberra]{"entity":"location"}
+    - [brisbane]{"entity":"location"}
+    - [melbourne]{"entity":"location"}
+    - [perth]{"entity":"location"}
+    - [hobart]{"entity":"location"}
+    - [gold coast]{"entity":"location"}
+    - [adelaide]{"entity":"location"}
+    - [cairns]{"entity":"location"}
+    - [darwin]{"entity":"location"}
+    - [home health agency](facility_type)
+    - [hospital](facility_type)
+    - [nursing home](facility_type)
+    - a [home health agency](facility_type)
+    - a [hospital](facility_type)
+    - a [nursing home](facility_type)
+
+- intent: orionhealth
+  examples: |
+    - are you orion health?
+    - can you introduce orion for me?
+    - do you know orion health?
+    - have you heard about orion?
+    - orion
+    - orion health
+
+- intent: search_provider
+  examples: |
+    - i need a [hospital]{"entity":"facility_type"}
+    - find me a nearby [clinic]{"entity":"facility_type"}
+    - show me [home health agencies]{"entity":"facility_type"}
+    - [hospital]{"entity":"facility_type"}
+    - find me a nearby [hospital]{"entity":"facility_type"} in [canberra]{"entity":"location"}
+    - i need a [home health agency]{"entity":"facility_type"}
+
+- intent: search_medication
+  examples: |
+    - could you help me to check some medications
+    - please provide a list of medications
+    - give me [all]{"entity": "medication_status"} the medications
+    - i want to find some medication for [OHCP|krystalb]{"entity":"patient_id"}?
+    - can you help for [OHCP|krystalb]{"entity":"patient_id"} find medicine?
+    - i wanna know which medication is [completed]{"entity":"medication_status"} now.
+    - could you help [OHCP%7Ckrystalb]{"entity":"patient_id"} check some [in progress]{"entity":"medication_status"} medications?
+    - what medicines are on [hold]{"entity":"medication_status"}
+    - can i check which medication is on [hold]{"entity":"medication_status"} for [OHCP|krystalb]{"entity":"patient_id"}
+
+- intent:  out_of_scope
+  examples: |
+    - please help with my ice cream it's dripping
+    - no wait go back i want a dripping ice cream but a cone that catches it so you can drink the ice cream later
+    - i want a non dripping ice cream
+    - someone call the police i think the bot died
+    - show me a picture of a chicken
+    - neither
+    - I want french cuisine
+    - i am hungry
+    - restaurant
+    - can i be shown a gluten free restaurant
+    - i don't care!!!!
+    - i do not care how are you
+    - again?
+    - oh wait i gave you my work email address can i change it?
+    - hang on let me find it
+    - stop it, i do not care!!!
+    - how come?
+    - I changed my mind
+    - what?
+    - did i break you
+    - that link doesn't work!
+    - you already have that
+    - this is a really frustrating experience
+    - no stop
+    - give me food
+    - i want food
+    - Can I ask you questions first?
+    - is it a wasteland full of broken robot parts?
+    - can we keep chatting?
+    - talk to me
+    - who is your favourite robot?
+    - can you help me to build a bot
+
+- regex: location
+  examples: |
+    - [0-9]{5}
+
+
+- synonym: medication
+  examples: |
+    - medications
+    - medicine
+    - medicines   \
+
+
+# - lookup: medication_status
+#   examples: |
+#     - active
+#     - preparation
+#     - in-progress
+#     - cancelled 
+#     - on-hold 
+#     - completed 
+#     - entered-in-error 
+#     - stopped 
+#     - declined 
+#     - unknown
+
+

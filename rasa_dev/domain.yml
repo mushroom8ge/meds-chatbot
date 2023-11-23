@@ -1,0 +1,170 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge # can remove
+  - inform
+  - search_provider
+  - search_medication
+  - thanks
+  - out_of_scope
+
+entities:
+ - time
+ - patient_id
+ - facility_type
+ - facility_id
+ - location
+ - medication_status
+
+slots:
+  medication_status:
+    type: categorical
+    values: 
+      - active
+      - preparation
+      - in-progress
+      - cancelled 
+      - on-hold
+      - completed 
+      - entered-in-error 
+      - stopped 
+      - declined 
+      - unknown
+      - all
+    # initial_value: unknown
+    mappings:
+    - type: from_entity
+      entity: medication_status
+  
+  patient_id:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: patient_id
+  medications:
+    type: list
+    influence_conversation: false
+    mappings:
+    - type: custom
+  facility_type:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: facility_type
+  facility_address:
+    type: text
+    mappings:
+    - type: custom
+  facility_id:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: facility_id
+  location:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: location
+  time:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: time
+      intent: search_medication
+
+forms:
+  facility_form:
+    ignored_intents: 
+    - out_of_scope
+    required_slots:
+        - facility_type
+        - location
+  medication_form:
+    ignored_intents: 
+    - out_of_scope
+    required_slots:
+        - patient_id
+        - medication_status
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+  - text: "Hi. What are you looking for?"
+  - text: "Hello! What can I help you find today?"
+  - text: "Good day, mate!"
+
+  utter_cheer_up: # can remove
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help: # can remove
+  - text: "Did that help you?"
+
+  utter_happy: # can remove
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+  - text: "Talk to you later!"
+  - text: "Have a good day."
+  - text: "Until next time!"
+
+  utter_noworries:
+  - text: "My pleasure."
+  - text: "You are welcome!"
+
+  utter_iamabot: # can remove
+  - text: "I am a bot, powered by Rasa."
+
+  utter_ask_location:
+  - text: "Please provide your city name."
+  - text: "What is your current city?"
+  - text: "Please provide your city name or zip code."
+  - text: "Please enter your zip code or city name to find local providers."
+
+  utter_ask_facility_type:
+  - text: "Choose one of the following to search for: hospital, nursing home, or home health agency."
+
+  utter_address:
+  - text: "The address is {facility_address}."
+
+  utter_ask_patient_id:
+  - text: "Please provide the patient id."
+
+  utter_ask_medication_status:
+  - text: "Which status do you want to check? /n preparation | in-progress | cancelled | on-hold | completed | entered-in-error | stopped | declined | unknown"
+  
+  utter_ask_time:
+  - text: "After a specfic date? If not, just click /return."
+
+  utter_medications:
+  - text: "{medications}"
+
+  # utter_medication_status_out_of_scope:
+  # - text: "Sorry, I can't get you :( If you have no idea about the status, please tell me 'unknown'!"
+
+  utter_idk:
+  - text: "I'm sorry, but I'm not sure how to help with that."
+  - text: "I can provide information on a variety of medications. How can I assist you today?"
+  - text: "You can ask me about medicine. How can I assist you?"
+  - text: "I apologize, but I don't have information on that topic. Why not ask me some questions about medication?"
+
+  utter_orion:
+  - text: "Well,Orion Health is a global health technology company that provides solutions and services for healthcare organizations. "
+  - text: "If you want to know more about our company, why not visit our website:)"
+  - text: "Yes! I work here and can help you search some info about the medication~"
+
+
+actions:
+  - action_find_facility_types
+  - action_find_healthcare_address
+  - action_find_medication
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

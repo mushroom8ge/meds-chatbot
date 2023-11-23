@@ -1,0 +1,18 @@
+{
+  "lookup": {
+    "eJyLrq6NBQAEOAGx": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEqhODWxKDkjvqAovywzJbWotjYWABLlH64=": "facility_form",
+    "eJyFzcEJgDAMBdBVOoATdBWRUGqKgdqUtBakuLsRPXnQWz68/D/2YzA9CzZwvhIna/p9QHIrWvOESKViUrsVFDWUNFZrCjrxC2ThRjPKcbVdLw0hMmeVd01wniLVHQLLquhj8U3/FqcT0ShLPQ==": "action_listen",
+    "eJy1j0sKwyAQhq/iAUJpt14liIiZ0AHjiE6FIt69k6Qvsuiuu/nhm/8xtj6oljJU6zwjRa3aftjoFtDqKQIWhijsrUAWBqNI1qqAy/5qU6aKE+S+uq0vFWwgSkLuNrPzGJDvdqa8CPQj8Yj+P/G4sQTiItDbAietxsvpbD51pAsygmDjF2YG9eqJcQvu5gEPm4ZU": "action_find_healthcare_address",
+    "eJy1j0sKwzAMBa/iA4TSbn2VYIywFSJw7CCrgRJy9ypNf2TRVbqTYPTeqJ2Xxswj4+QhCJVszbwNPsOA1jyXRFUwK3utyMpQ1lWsqQgcej9ymSgiL2vaejKhT6WMSm4xHQRKJDffFR4U+tG4R//fuP+xpiJVoXcERWvay+nsPjrqQkKoWPuFuca8PCk/io/T6yhH3yMk6QMweoiRsdajfd0dSFfIMg==": "utter_address",
+    "eJzNj90KgzAMRl+lDyBju+2riITSRgzUVtIoDPHdF+f+8GJXE3aXwMn3ndTzUpl5YJzAeaGcrJm3AZLr0ZrHEqkIJmXHgqwMJV3FmoKOfQcD54kC8rKmrScTQsx5UHKLaZ2nSHKFNnOv0JfGPXp84/7HErMUhV4RFKypL6dz89ZRFxJCxeoPrKnM05PSvfh3ei2lAB26KJ13jOBCYCzl/3xHEeSj9JobLJUDZQ==": "action_listen",
+    "eJzNkUEKwjAQRa+SAxTRba5SShiSKR1MkzIZC1Jyd1NrVbpwIQrdzcCb/19IPeVKTQPjaMAKxaDVtAwmQI9aPRZPSTAU9pKQC0OhrKJVQmDbmYHjSA45z2nzyYjGxzgUcolpwZInuZo2cl+gD41b9P+N2zcmHyUV6BlBTqv6dDg2L53iQkJYsPoNayq1elK4F/9Or6XgTIfgpbPAaMA5xpT253sRQd6v3je/vVpIB+Gccm5uJQM1Ng==": "utter_noworries",
+    "eJzNkUEKgzAQRa+SA0hpt7mKSAhmxKExkcloKeLdO9baFhddiAV3GXj5/02SD2OmhpagN7ZkjEGrYT6YYBvQ6jV4TAxB2C4BCYNBRtYqgaWyNi3FHh3QOKVNV3owPsZWyDmmsiV65LupIjUC/Whco/9vXO+YfOQk0DsCnVb55XQuPjrigowgWP6FFZlaPDE8i/fTqzA4U4P1XJeWwFjnCFI6nm/HDHRcvS2/vVhwbcM17fdIId4ikey90aN4ABc8aBY=": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taS2NhYA6dwbhQ==": "utter_greet",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taSWgBmlJSWpRfEQpbhMiAUAQvc0lw==": "action_listen",
+    "eJydzsEJwzAMBdBVPEAn8CqlCOP8pobYDrKSi8nuUepCD4EYctOHpy896/YwdWas5LyEnKypbaDkIqz5hSkUQVK7FLCakDSKNSMDsnU6FhEwNXqvofNFgWP/oYgheHfIb9+xtIKmnGe1rehP6J05Kru4esb9u68dMwqBFw==": "action_listen",
+    "eJydjsEJgDAQBFtJAVaQVkRCiKsemFMuFz/B3o3ow5/ibxdmh23L3piyCjbng9LC1pQrOPYR1txlpqTgyuYEqQxxrWrNKIDuL46sCnEX+s/w8iLBS5hcRE/Bn+RH30DcP1dfxN0BXOV1gw==": "utter_medications",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taSWgBmlJSWpRfEQpeSZQMAVxamJRckZ8bmpKZnJiSCVRJqXlpmXgqyLcoMhXkWoLybKzFgAOyKV6Q==": "utter_goodbye",
+    "eJytj1EKgzAQRK+SA/QEuUopISajXagb2axCCd69KSm0f4r1bwfePGavZb2YMgkW54NSYmtKOxz7EdZ8woOygis7Z0hliGtUawYBdN1wzKoQ19Bjho0VGV7C3Y2IFPyb3OnrieNv639xe/XL59OcQ0qxe2KX7/YC4Hm0qA==": "action_listen"
+  }
+}

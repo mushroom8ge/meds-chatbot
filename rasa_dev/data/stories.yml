@@ -1,0 +1,157 @@
+version: "3.1"
+
+stories:
+
+# - story: happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_great
+#   - action: utter_happy
+
+# - story: sad path 1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: affirm
+#   - action: utter_happy
+
+# - story: sad path 2
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye
+
+# - story: happy_path_facility
+#   steps:
+#   - intent: greet
+#   # - action: action_fin45d_facility_types
+#   - intent: inform
+#     entities:
+#     - facility_type: "hospital"
+#   - action: facility_form
+#   - active_loop: facility_form
+#   - intent: inform
+#     entities:
+#     - facility_id: "4245"
+#   - action: "action_find_healthcare_address"
+#   - action: utter_address
+#   - intent: thanks
+#   - action: utter_noworries
+
+# - story: happy_path_multi_requests
+#   steps:
+#   - intent: greet
+#   # - action: action_find_facility_types
+#   - intent: inform
+#     entities:
+#     - facility_type: "hospital"
+#   - action: facility_form
+#   - active_loop: facility_form
+#   - intent: inform
+#     entities:
+#     - facility_id: "747604"
+#   - action: "action_find_healthcare_address"
+#   - action: utter_address
+#   - intent: search_provider
+#     entities:
+#     - facility_type": "hospital"
+#   - action: facility_form
+#   - active_loop: facility_form
+#   - intent: inform
+#     entities:
+#     - facility_id: "4245"
+#   - action: "action_find_healthcare_address"
+#   - action: utter_address
+
+# - story: happy_path2
+#   steps:
+#   - intent: search_provider
+#     entities:
+#     - location": "Austin"
+#     - facility_type": "hospital"
+#   - action: facility_form
+#   - active_loop: facility_form
+#   - intent: inform
+#     entities:
+#     - facility_id: "450871"
+#   - action: "action_find_healthcare_address"
+#   - action: utter_address
+#   - intent: thanks
+#   - action: utter_noworries
+
+
+
+# - story: search hospital happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: search_provider
+#     entities:
+#     - location: "canberra"
+#     - facility_type: "hospital"
+#   - action: utter_idk
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye
+
+
+# - story: search hospital + location happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: search_provider
+#     entities:
+#     - facility_type: "hospital"
+#   - action: utter_ask_location
+#   - intent: inform
+#     entities:
+#     - location: "canberra"
+#   - action: utter_idk
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye
+
+
+
+
+- story: search medication form
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: search_medication
+  - or:
+    - slot_was_set:
+      - patient_id: null
+    - slot_was_set:
+      - medication_status: null
+  - action: medication_form
+  - active_loop: medication_form
+
+# - story: greet anytime the user says hi
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+
+# - story: Say goodbye anytime the user says goodbye
+#   steps:
+#   - intent: goodbye
+#   - action: utter_goodbye
+
+# - story: Say 'I am a bot' anytime the user challenges
+#   steps:
+#   - intent: bot_challenge
+#   - action: utter_iamabot
+
+# - story: Say 'I am a bot' anytime the user thanks
+#   steps:
+#   - intent: thanks
+#   - action: utter_noworries
+

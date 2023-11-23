@@ -1,0 +1,25 @@
+/* Common styles for both user and bot messages */
+.history {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styles specific to user messages */
+.user {
+  align-self: flex-start;
+  background-color: #e0e0e0; 
+  margin: 5px;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* Styles specific to bot responses */
+.bot {
+  align-self: flex-end;
+  background-color: #c7f0db; 
+  margin: 5px;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 16px;
+}
