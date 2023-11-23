@@ -66,7 +66,7 @@ function App() {
   return (
     <div className="page flex-col">
         <div className="group_1 flex-row justify-between">
-            <div className="group_2 flex-col">
+            <div className="function_box flex-col">
                 {/* <div className="button_new_chat flex-col">
                     <span className="text_1">new&nbsp;chat</span>
                 </div> */}
@@ -106,7 +106,7 @@ function App() {
                 </div>
             </div>
         </div>
-        <div className="group_3 flex-row justify-between">
+        <div className="group_2 flex-row justify-between">
             <img
                 className="oh_logo"
                 src={"https://lanhu.oss-cn-beijing.aliyuncs.com/MasterDDSSlicePNG1f1c91c83883625a3eff3fd6e741f254.png"}

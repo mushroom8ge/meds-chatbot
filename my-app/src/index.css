@@ -16,20 +16,22 @@ code {
   background-color: rgba(255, 255, 255, 1);
   position: relative;
   width: 1728px;
-  height: 1117px;
+  height: 1000px; 
+  /* height: 1117px;  */
+
   overflow: hidden;
 }
 
 .group_1 {
-  width: 1697px;
-  height: 902px;
+  width: 1688px;
+  height: 700px;
   margin: 21px 0 0 15px;
 }
 
-.group_2 {
+.function_box {
   background-color: rgba(88, 88, 88, 1);
   width: 364px;
-  height: 902px;
+  height: 750px;
   border: 1px solid rgba(0, 0, 0, 1);
 }
 
@@ -75,23 +77,24 @@ code {
 
 .dialog_box {
   background-color: rgba(241, 241, 241, 1);
-  height: 1063px;
+  height: 860px;
   border: 2px solid rgba(255, 255, 255, 1);
   margin-top: 4px;
   width: 1266px;
 }
 
 
-.group_3 {
+.group_2 {
   width: 1688px;
   height: 141px;
-  margin: 24px 0 29px 22px;
+  /* margin: 24px 0 29px 22px; */
+  margin: 50px 0 150px 22px;
 }
 
 .oh_logo {
   width: 357px;
   height: 136px;
-  margin-top: 5px;
+  margin-top: 0px;
 }
 
 /* .block_1 {
