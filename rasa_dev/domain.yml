@@ -141,7 +141,7 @@ responses:
   - text: "Which status do you want to check? /n preparation | in-progress | cancelled | on-hold | completed | entered-in-error | stopped | declined | unknown"
   
   utter_ask_time:
-  - text: "After a specfic date? If not, just click /return."
+  - text: "After a specfic date? If not, just click ENTER."
 
   utter_medications:
   - text: "{medications}"

@@ -287,7 +287,6 @@ class ActionFindMedication(Action):
         patient_id = tracker.get_slot("patient_id")
         medication_status = tracker.get_slot("medication_status") # TODO: status should be standardised
         time = next(tracker.get_latest_entity_values("time"), None)
-        print("this is the time your input!!!!!!!!!!!!!!!!!!!!!!!!")
         print(time)
         
         
