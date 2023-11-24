@@ -17,6 +17,7 @@ intents:
 entities:
  - time
  - patient_id
+ - name_space
  - facility_type
  - facility_id
  - location
@@ -41,6 +42,12 @@ slots:
     mappings:
     - type: from_entity
       entity: medication_status
+
+  name_space:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: name_space
   
   patient_id:
     type: text
@@ -90,6 +97,7 @@ forms:
     - out_of_scope
     required_slots:
         - patient_id
+        - name_space
         - medication_status
 
 responses:
@@ -135,7 +143,10 @@ responses:
   - text: "The address is {facility_address}."
 
   utter_ask_patient_id:
-  - text: "Please provide the patient id."
+  - text: "Could you tell me the patient id?"
+
+  utter_ask_name_space:
+  - text: "Please provide the name space."
 
   utter_ask_medication_status:
   - text: "Which status do you want to check? /n preparation | in-progress | cancelled | on-hold | completed | entered-in-error | stopped | declined | unknown"
