@@ -284,7 +284,9 @@ class ActionFindMedication(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict]:
 
-        patient_id = tracker.get_slot("patient_id")
+        p_id = tracker.get_slot("patient_id")
+        name_space = tracker.get_slot("name_space")
+        patient_id = name_space + "%7" + p_id
         medication_status = tracker.get_slot("medication_status") # TODO: status should be standardised
         time = next(tracker.get_latest_entity_values("time"), None)
         print(time)

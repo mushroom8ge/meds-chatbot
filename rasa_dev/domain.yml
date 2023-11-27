@@ -16,7 +16,6 @@ intents:
 
 entities:
  - time
- - patient_id
  - name_space
  - facility_type
  - facility_id
@@ -52,8 +51,17 @@ slots:
   patient_id:
     type: text
     mappings:
-    - type: from_entity
-      entity: patient_id
+    - type: from_text
+      conditions:
+      - active_loop: medication_form
+        requested_slot: patient_id
+
+  # patient_id:
+  #   type: text
+  #   mappings:
+  #   - type: from_entity
+  #     entity: patient_id
+
   medications:
     type: list
     influence_conversation: false
@@ -149,7 +157,7 @@ responses:
   - text: "Please provide the name space."
 
   utter_ask_medication_status:
-  - text: "Which status do you want to check? /n preparation | in-progress | cancelled | on-hold | completed | entered-in-error | stopped | declined | unknown"
+  - text: "Which status do you want to check?  preparation | in-progress | cancelled | on-hold | completed | entered-in-error | stopped | declined | unknown"
   
   utter_ask_time:
   - text: "After a specfic date? If not, just click ENTER."

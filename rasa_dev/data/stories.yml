@@ -132,6 +132,8 @@ stories:
       - patient_id: null
     - slot_was_set:
       - medication_status: null
+    - slot_was_set:
+      - name_space: null
   - action: medication_form
   - active_loop: medication_form
 

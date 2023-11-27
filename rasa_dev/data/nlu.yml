@@ -154,6 +154,7 @@ nlu:
 
 - intent: inform
   examples: |
+    - [OHCP]{"entity":"name_space"}  
     - [OHCP%7Ckrystalb]{"entity":"patient_id"}
     - [active]{"entity":"medication_status"}
     - [preparation]{"entity":"medication_status"}
@@ -258,8 +259,13 @@ nlu:
   examples: |
     - medications
     - medicine
-    - medicines   \
+    - medicines   
+    - med
+    - meds
 
+- lookup: name_space
+  examples: |
+    - OHCP
 
 # - lookup: medication_status
 #   examples: |

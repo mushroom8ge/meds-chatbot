@@ -92,7 +92,7 @@ function App() {
                         balalala&nbsp;&nbsp;balalala
                         <br />
                         <br />
-                        OHCP%7Ckrystalb
+                        ckrystalb
                     </span>
                 </div>
                 <div className="dialog_box flex-col">
