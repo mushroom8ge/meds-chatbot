@@ -7,7 +7,7 @@
 /* Styles specific to user messages */
 .user {
   align-self: flex-end;
-  background-color: #e0e0e0; 
+  background-color: #c7f0db; 
   margin: 5px;
   padding: 8px;
   border-radius: 8px;
@@ -17,7 +17,7 @@
 /* Styles specific to bot responses */
 .bot {
   align-self: flex-start;
-  background-color: #c7f0db; 
+  background-color: #e0e0e0; 
   margin: 5px;
   padding: 8px;
   border-radius: 8px;

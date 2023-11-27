@@ -65,72 +65,70 @@ function App() {
 
     return (
         <div className="page flex-col">
-            <div className="group_1 flex-row justify-between">
-                <div className="function_box flex-col">
-                    {/* <div className="button_new_chat flex-col">
-                        <span className="text_1">new&nbsp;chat</span>
-                    </div> */}
-
-                    <button className="button_new_chat" onClick={handleButtonClick}>
-                        new chat
-                    </button>
-
-                    <img
-                        className="label_1"
-                        src={"https://lanhu.oss-cn-beijing.aliyuncs.com/MasterDDSSlicePNG7058f070968149bce9e2b90b6257511e.png"}
-                    />
-                    <span className="paragraph_1">
-                        <br />
-                        <br />
-                        <br />
-                        Welcome&nbsp;to&nbsp;use&nbsp;chatbot
-                        <br />
-                        <br />
-                        some&nbsp;guide&nbsp;info&nbsp;about&nbsp;the&nbsp;robot&nbsp;
-                        <br />
-                        <br />
-                        balalala&nbsp;&nbsp;balalala
-                        <br />
-                        <br />
-                        ckrystalb
-                    </span>
-                </div>
-                <div className="dialog_box flex-col">
-                    <Input
-                        placeholder="Type your message here"
-                        value={msg} // Ensure value is not undefined
-
-                        onChange={handleChange}
-                        onEnterPress={handleEnterPress}
-                        style={{
-                            border: '1px solid #ccc',
-                            borderRadius: '8px',
-                            padding: '10px',
-                            fontSize: '16px',
-                            marginBottom: '10px',
-                            width: '100%',
-                            boxSizing: 'border-box',
-                          }}
-
-                    />
-                    <div className="history"  style={{ overflowY: 'auto', maxHeight: '720px' }}>
-                        {history.map((item, index) => (
-                            // <div key={index}>{msg}</div>
-                            <div key={index} className={item.type}>
-                                {item.text}
-                            </div>
-                        ))}
-                    </div>
-                </div>
+          <div className="group_1 flex-row justify-between">
+            <div className="function_box flex-col">
+              <button className="button_new_chat" onClick={handleButtonClick}>
+                new chat
+              </button>
+              <img
+                className="label_1"
+                src={
+                  "https://lanhu.oss-cn-beijing.aliyuncs.com/MasterDDSSlicePNG7058f070968149bce9e2b90b6257511e.png"
+                }
+              />
+              <span className="paragraph_1">
+                <br />
+                <br />
+                <br />
+                Welcome&nbsp;to&nbsp;use&nbsp;chatbot
+                <br />
+                <br />
+                some&nbsp;guide&nbsp;info&nbsp;about&nbsp;the&nbsp;robot&nbsp;
+                <br />
+                <br />
+                balalala&nbsp;&nbsp;balalala
+                <br />
+                <br />
+                ckrystalb
+              </span>
             </div>
-            <div className="group_2 flex-row justify-between">
-                <img
-                    className="oh_logo"
-                    src={"https://lanhu.oss-cn-beijing.aliyuncs.com/MasterDDSSlicePNG1f1c91c83883625a3eff3fd6e741f254.png"}
-                />
-            </div>
+            <div className="dialog_container flex-col">
+        <div className="dialog_box flex-col">
+          <div className="history" style={{ overflowY: 'auto', maxHeight: '720px', display: 'flex', flexDirection: 'column-reverse', margin: '10px' }}>
+            {history.slice(0).reverse().map((item, index) => (
+              <div key={index} className={item.type}>
+                {item.text}
+              </div>
+            ))}
+          </div>
         </div>
-    );
+        <Input
+          placeholder="Type your message here"
+          value={msg}
+          onChange={handleChange}
+          onEnterPress={handleEnterPress}
+          style={{
+            border: '1px solid #ccc',
+            borderRadius: '8px',
+            padding: '10px',
+            fontSize: '16px',
+            marginTop: '10px',
+            width: '100%',
+            boxSizing: 'border-box',
+          }}
+        />
+      </div>
+    </div>
+          <div className="group_2 flex-row justify-between">
+            <img
+              className="oh_logo"
+              src={
+                "https://lanhu.oss-cn-beijing.aliyuncs.com/MasterDDSSlicePNG1f1c91c83883625a3eff3fd6e741f254.png"
+              }
+            />
+          </div>
+        </div>
+      );
 }
 
 export default App;

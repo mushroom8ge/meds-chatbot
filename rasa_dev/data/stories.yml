@@ -127,13 +127,13 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: search_medication
-  - or:
-    - slot_was_set:
-      - patient_id: null
-    - slot_was_set:
-      - medication_status: null
-    - slot_was_set:
-      - name_space: null
+  # - or:
+  #   - slot_was_set:
+  #     - patient_id: null
+  #   - slot_was_set:
+  #     - medication_status: null
+  #   - slot_was_set:
+  #     - name_space: null
   - action: medication_form
   - active_loop: medication_form
 
