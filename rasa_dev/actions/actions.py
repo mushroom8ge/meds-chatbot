@@ -16,6 +16,7 @@ from rasa_sdk.forms import FormValidationAction
 import requests
 import base64
 from datetime import datetime as dt
+from datetime import timedelta
 import pytz
 
 # We use the medicare.gov database to find information about 3 different
@@ -108,6 +109,15 @@ def _resolve_name(facility_types, resource) ->Text:
         if value.get("resource") == resource:
             return value.get("name")
     return ""
+
+
+def _in_period(period_start,period_end, start, end) ->  bool:
+    '''
+    used for check if the period (from period_start to period_end) include anytime (from start to end)
+    '''
+    if start > period_end or end < period_start:
+        return False
+    return True
 
 class FindFacilityTypes(Action):
     """This action class allows to display buttons for each facility type
@@ -288,19 +298,30 @@ class ActionFindMedication(Action):
         name_space = tracker.get_slot("name_space")
         patient_id = name_space + "%7" + p_id
         medication_status = tracker.get_slot("medication_status") # TODO: status should be standardised
-        time = next(tracker.get_latest_entity_values("time"), None)
+        time = tracker.get_slot("time")
         print(time)
+        # print("~~~~~~~~~~~~~~~~~~~")
+        # time = next(tracker.get_latest_entity_values("time"), None)
+        # print(time)
+
         
         
         print(type(time))
         date_start = dt.min.replace(tzinfo=pytz.utc)
         date_end = dt.max.replace(tzinfo=pytz.utc)
-        if time:
+        if isinstance(time, str):
+            date_start = dt.strptime(time, "%Y-%m-%dT%H:%M:%S.%f%z")
+            date_end = date_start + timedelta(days=1)
+        elif isinstance(time,dict):
             if time['from']:
                 date_start = dt.strptime(time['from'], "%Y-%m-%dT%H:%M:%S.%f%z")
                 print(date_start.tzinfo)
             if time['to']:
                 date_end = dt.strptime(time['to'], "%Y-%m-%dT%H:%M:%S.%f%z")
+
+        print("date_start:", date_start)
+        
+        print("date_end:", date_end)
 
         # assume the patient's id and status is in the range now
         # dispatcher.utter_message("medication_status is {}".format(medication_status))
@@ -323,6 +344,10 @@ class ActionFindMedication(Action):
                         if medication_status=="all" or medication_status in resource.get("status"):
 
                             if time:
+                                # med_period = resource.get("effectivePeriod")
+                                # if med_period:
+                                #     med_start = resource.get("")
+
                                 effective_datetime = resource.get("effectiveDateTime")
                                 if not effective_datetime:
                                     effective_datetime = resource.get("dateAsserted")

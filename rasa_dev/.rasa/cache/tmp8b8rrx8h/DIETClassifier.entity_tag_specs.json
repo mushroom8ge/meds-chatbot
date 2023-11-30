@@ -1,0 +1,52 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-facility_type",
+      "2": "I-facility_type",
+      "3": "L-facility_type",
+      "4": "U-facility_type",
+      "5": "B-location",
+      "6": "I-location",
+      "7": "L-location",
+      "8": "U-location",
+      "9": "B-medication_status",
+      "10": "I-medication_status",
+      "11": "L-medication_status",
+      "12": "U-medication_status",
+      "13": "B-name_space",
+      "14": "I-name_space",
+      "15": "L-name_space",
+      "16": "U-name_space",
+      "17": "B-patient_id",
+      "18": "I-patient_id",
+      "19": "L-patient_id",
+      "20": "U-patient_id",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-facility_type": 1,
+      "I-facility_type": 2,
+      "L-facility_type": 3,
+      "U-facility_type": 4,
+      "B-location": 5,
+      "I-location": 6,
+      "L-location": 7,
+      "U-location": 8,
+      "B-medication_status": 9,
+      "I-medication_status": 10,
+      "L-medication_status": 11,
+      "U-medication_status": 12,
+      "B-name_space": 13,
+      "I-name_space": 14,
+      "L-name_space": 15,
+      "U-name_space": 16,
+      "B-patient_id": 17,
+      "I-patient_id": 18,
+      "L-patient_id": 19,
+      "U-patient_id": 20,
+      "O": 0
+    },
+    "num_tags": 21
+  }
+]

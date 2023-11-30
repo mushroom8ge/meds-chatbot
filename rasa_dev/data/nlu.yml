@@ -205,15 +205,15 @@ nlu:
 
 - intent: search_medication
   examples: |
-    - could you help me to check some medications
-    - please provide a list of medications
-    - give me [all]{"entity": "medication_status"} the medications
-    - i want to find some medication for [OHCP|krystalb]{"entity":"patient_id"}?
+    - could you help me to check some medications from [OHCP]{"entity":"name_space"}?
+    - please provide a list of medications in [OHCP]{"entity":"name_space"}
+    - give me [all]{"entity": "medication_status"} the medications of [OHCP]{"entity":"name_space"}
+    - i want to find some medication for [OHCP|krystalb]{"entity":"patient_id"} 
     - can you help for [OHCP|krystalb]{"entity":"patient_id"} find medicine?
     - i wanna know which medication is [completed]{"entity":"medication_status"} now.
-    - could you help [OHCP%7Ckrystalb]{"entity":"patient_id"} check some [in progress]{"entity":"medication_status"} medications?
-    - what medicines are on [hold]{"entity":"medication_status"}
-    - can i check which medication is on [hold]{"entity":"medication_status"} for [OHCP|krystalb]{"entity":"patient_id"}
+    - could you help [OHCP%7Ckrystalb]{"entity":"patient_id"} check some [in-progress]{"entity":"medication_status"} medications?
+    - what medicines are [on-hold]{"entity":"medication_status"} within [OHCP]{"entity":"name_space"}
+    - can i check which medication is [on-hold]{"entity":"medication_status"} for [OHCP|krystalb]{"entity":"patient_id"}
 
 - intent:  out_of_scope
   examples: |
