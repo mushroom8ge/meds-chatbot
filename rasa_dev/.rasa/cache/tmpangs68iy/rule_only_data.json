@@ -1,0 +1,9 @@
+{
+  "rule_only_slots": [
+    "patient_id",
+    "time",
+    "medication_status",
+    "name_space"
+  ],
+  "rule_only_loops": []
+}

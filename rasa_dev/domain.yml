@@ -9,6 +9,7 @@ intents:
   - mood_unhappy
   - bot_challenge # can remove
   - inform
+  - inform_time
   - search_provider
   - search_medication
   - thanks
@@ -91,7 +92,11 @@ slots:
     mappings:
     - type: from_entity
       entity: time
-      intent: search_medication
+      intent: 
+      - search_medication  
+      - inform_time
+      - greet
+      - goodbye  #should be redefine coz it could include the useless time with unrelated intent
 
 forms:
   facility_form:

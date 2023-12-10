@@ -152,6 +152,27 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
 
+- intent: inform_time
+  examples: |
+    - next Tuesday
+    - for this weekend
+    - after tomorrow
+    - from December 15th
+    - Since last Friday
+    - in two hours
+    - before 8 AM
+    - Monday
+    - wednesday
+    - thursday
+    - friday
+    - saturday
+    - sunday
+    - afternoon
+    - morning
+    - 05/01/22
+    - 2022/01/05
+    - Friday, 5 January, 2022
+
 - intent: inform
   examples: |
     - [OHCP]{"entity":"name_space"}  

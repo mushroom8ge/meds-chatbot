@@ -44,8 +44,14 @@ ENDPOINTS = {
     }
 }
 
-ENDPOINT = {"status": "http://medicines-nightly-dmd.orion.internal:19080/fhirng/4.0/List?patient.identifier={}&_format-json&code=medication-history&status={}",
-            "base": "http://medicines-nightly-dmd.orion.internal:19080/fhirng/4.0/List?patient.identifier={}&_format-json&code=medication-history"}
+# ENDPOINT = {"status": "http://medicines-nightly-dmd.orion.internal:19080/fhirng/4.0/List?patient.identifier={}&_format-json&code=medication-history&status={}",
+#             "base": "http://medicines-nightly-dmd.orion.internal:19080/fhirng/4.0/List?patient.identifier={}&_format-json&code=medication-history"}
+
+# ENDPOINT = {"status": "http://medicines-nightly-nzulm.orion.internal:19080/fhirng/4.0/List?patient.identifier={}&_format-json&code=medication-history&status={}",
+#             "base": "http://medicines-nightly-nzulm.orion.internal:19080/fhirng/4.0/List?patient.identifier={}&_format-json&code=medication-history"}
+
+ENDPOINT = {"status": "http://medicines-nightly-nzulm.orion.internal:19080/fhirng/4.0/MedicationStatement?patient.identifier={}&_format-json&code=medication-history&status={}",
+            "base": "http://medicines-nightly-nzulm.orion.internal:19080/fhirng/4.0/MedicationStatement?patient.identifier={}&_format-json&code=medication-history"}
 
 USERNAME = "clinician"
 PASSWORD = "b"
@@ -296,7 +302,7 @@ class ActionFindMedication(Action):
 
         p_id = tracker.get_slot("patient_id")
         name_space = tracker.get_slot("name_space")
-        patient_id = name_space + "%7" + p_id
+        patient_id = name_space + "%7c" + p_id
         medication_status = tracker.get_slot("medication_status") # TODO: status should be standardised
         time = tracker.get_slot("time")
         print(time)
@@ -319,10 +325,6 @@ class ActionFindMedication(Action):
             if time['to']:
                 date_end = dt.strptime(time['to'], "%Y-%m-%dT%H:%M:%S.%f%z")
 
-        print("date_start:", date_start)
-        
-        print("date_end:", date_end)
-
         # assume the patient's id and status is in the range now
         # dispatcher.utter_message("medication_status is {}".format(medication_status))
         # dispatcher.utter_message("patient_id is {}".format(patient_id))
@@ -334,7 +336,7 @@ class ActionFindMedication(Action):
         results = response.json()
 
         if results: 
-            medications = []
+            medications = set()
             entries = results.get("entry")
 
             if entries:
@@ -342,32 +344,61 @@ class ActionFindMedication(Action):
                     resource = entry.get("resource")
                     if resource and "status" in resource:
                         if medication_status=="all" or medication_status in resource.get("status"):
-
+                            print("user wanna check: ", medication_status)
+                            print("this medication status: ", resource.get("status"))
                             if time:
-                                # med_period = resource.get("effectivePeriod")
-                                # if med_period:
-                                #     med_start = resource.get("")
 
-                                effective_datetime = resource.get("effectiveDateTime")
-                                if not effective_datetime:
-                                    effective_datetime = resource.get("dateAsserted")
-                                    if not effective_datetime:
+                                # med_start = dt.min.replace(tzinfo=pytz.utc)
+                                # med_end = dt.max.replace(tzinfo=pytz.utc)
+
+                                med_period = resource.get("effectivePeriod")
+                                if med_period:
+                                    med_start = med_period.get("start")
+                                    print(med_start)
+                                    med_start = dt.strptime(med_start, "%Y-%m-%dT%H:%M:%S%z") if med_start else dt.min.replace(tzinfo=pytz.utc)
+                                    print(med_start)
+                                    med_end = med_period.get("end")
+                                    med_end = dt.strptime(med_end, "%Y-%m-%dT%H:%M:%S%z") if med_end else dt.max.replace(tzinfo=pytz.utc)
+                                else:
+                                    med_end = dt.max.replace(tzinfo=pytz.utc)
+                                    med_start = resource.get("effectiveDateTime") or resource.get("dateAsserted")
+                                    if not med_start:
                                         continue
-                                    date = dt.strptime(effective_datetime, "%Y-%m-%dT%H:%M:%S%z")
-                                    if date >= date_start and date <= date_end:
+                                    med_start = dt.strptime(med_start, "%Y-%m-%dT%H:%M:%S%z")
+
+                                print("date_start:", date_start)
+                                print("date_end:", date_end)
+                                print("med_start:", med_start)
+                                print("med_end:", med_end)
+
+                                if _in_period(date_start, date_end, med_start, med_end):
+                                    print("huhuhuhuu")
+                                    codings= resource.get("medicationCodeableConcept").get("coding")
+                                    for coding in codings:
+                                        medications.add(coding.get("display"))
+                                        # medications.append(coding.get("display"))
+
+                                # effective_datetime = resource.get("effectiveDateTime")
+                                # if not effective_datetime:
+                                #     effective_datetime = resource.get("dateAsserted")
+                                #     if not effective_datetime:
+                                #         continue
+                                #     date = dt.strptime(effective_datetime, "%Y-%m-%dT%H:%M:%S%z")
+                                #     if date >= date_start and date <= date_end:
                                         
-                                        codings= resource.get("medicationCodeableConcept").get("coding")
-                                        for coding in codings:
-                                            medications.append(coding.get("display"))
+                                #         codings= resource.get("medicationCodeableConcept").get("coding")
+                                #         for coding in codings:
+                                #             medications.append(coding.get("display"))
 
                             else: # users don't care about time
                                 codings= resource.get("medicationCodeableConcept").get("coding")
                                 for coding in codings:
-                                    medications.append(coding.get("display"))
+                                    medications.add(coding.get("display"))
+                                    # medications.append(coding.get("display"))
                             
             if len(medications) > 0:
                 print("here are the medications you may want to check!")
                 print(medications)
-                return [SlotSet("medications", medications)]
+                return [SlotSet("medications", list(medications))]
         print("No medications found.")
         return [SlotSet("medications", ["not found"])]

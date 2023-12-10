@@ -42,6 +42,7 @@ rules:
   # The actions we want to run when the form is submitted.
   - action: utter_ask_time
   - action: action_listen
+  # - intent: inform_time
   - action: action_find_medication
   - action: utter_medications
   - action: utter_goodbye
@@ -63,3 +64,14 @@ rules:
   - action: utter_medications
   - action: utter_goodbye
 
+- rule: query the meds when the effective period update
+  condition:
+  - slot_was_set:
+    - patient_id
+    - name_space
+    - medication_status
+  steps:
+  - intent: inform_time
+  - action: action_find_medication
+  - action: utter_medications
+  - action: utter_goodbye
